@@ -6,7 +6,7 @@ const port = 8000 ;
 const db = require('./config/mongoose') ;  
 const session = require('express-session') ; 
 const passport  = require('passport') ; 
-// const passportLocal = require('./config/passport-local-strategy') ; 
+const passportLocal = require('./config/passport-local-startegy') ; 
 const MongoStore = require('connect-mongo') ;
 app.use(express.urlencoded()) ;          
 app.use(cookieParser()) ;
