@@ -12,7 +12,7 @@ const docschema = new mongoose.Schema({
     dpdf: {
         type: String, // This will store the path to the PDF file
     },
-    puser: {
+    duser: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
@@ -30,7 +30,7 @@ let storageForPDF = multer.diskStorage({
     }
 });
 
-docschema.statics.uploadedPpdf = multer({ storage: storageForPDF }).single('ppdf');
+docschema.statics.uploadedPpdf = multer({ storage: storageForPDF }).single('dpdf');
 docschema.statics.docPath = DOC_PATH;
 
 const Document = mongoose.model('Product', docschema);

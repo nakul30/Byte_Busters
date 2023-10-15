@@ -59,6 +59,7 @@ passport.checkAuthentication = async function( req , res , next ){
             // console.log(req.user.name ) ; 
             return next()
         }
+        console.log(req);
         return res.redirect('/users/signin') ;
     }
     catch( err ){
@@ -69,7 +70,7 @@ passport.checkAuthentication = async function( req , res , next ){
 passport.dontload = async function( req , res , next ){
     try{
         if ( req.isAuthenticated()){
-            return res.redirect('/..............................................') ; 
+            return res.redirect('/') ; 
         }
         return next() ;
     }
