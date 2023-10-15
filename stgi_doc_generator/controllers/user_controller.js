@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 module.exports.signup = function (req, res) {
     if (req.isAuthenticated()) {
-        return res.redirect('/users/profile');
+        return res.redirect('/');
     }
     return res.render("user_signup", {
         title: "SIGNUP",
@@ -50,11 +50,11 @@ module.exports.profile = function (req, res) {
         });
 };
 module.exports.signin = function (req, res) {
-    // console.log(req.user.name) ;  
-    // so that button us no tvisiboe when use signed in 
     if (req.isAuthenticated()) {
-        return res.redirect('/users/profile');
+        console.log("hello") ;
+        return res.redirect('/');
     }
+    console.log("hello.0") ;
     return res.render('user_signin', {
         title: "Sign IN",
         // console.log(req.user.name) 
@@ -62,6 +62,6 @@ module.exports.signin = function (req, res) {
 }; 
 module.exports.createsession = function (req, res) {
     return res.render('converterpage',{
-        title:"Covert It"
+        title:"Covert It" 
     });
 };
