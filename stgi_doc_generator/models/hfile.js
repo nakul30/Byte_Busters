@@ -33,5 +33,5 @@ let storageForPDF = multer.diskStorage({
 docschema.statics.uploadedPpdf = multer({ storage: storageForPDF }).single('dpdf');
 docschema.statics.docPath = DOC_PATH;
 
-const Document = mongoose.model('Product', docschema);
+const Document = mongoose.model('Document', docschema);
 module.exports = Document;

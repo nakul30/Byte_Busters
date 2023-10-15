@@ -65,3 +65,14 @@ module.exports.createsession = function (req, res) {
         title:"Covert It" 
     });
 };
+// module.exports.destroySession = function (req, res) {
+//     req.logout(function (err) {
+//         if (err) {
+//             console.log("ERR");
+//             return;
+//         }
+//         // req.flash('success' , 'You have Logged out') ; 
+//         return res.redirect('');
+//     });
+//     // return res.redirect('/') ; 
+// }

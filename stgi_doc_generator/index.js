@@ -1,6 +1,9 @@
 const express = require('express') ; 
 const cookieParser = require('cookie-parser');  
- 
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 const app = express() ;  
 var bodyParser = require('body-parser'); 
 const port = 8000 ;  

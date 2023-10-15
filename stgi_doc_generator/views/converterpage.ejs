@@ -25,8 +25,9 @@
     
           <div class="col-md-3 text-end">
             <!-- <button type="button" class="btn btn-outline-primary me-2">Login</button> -->
-            <li><a href="/users/signin"><span class="glyphicon glyphicon-log-in"> Login-in </span></a></li>
+            <a href="/users/signin"><span class="glyphicon glyphicon-log-in"> Login-in </span></a>
              <a href="/users/signup"><span class="glyphicon glyphicon-user"> Sign-up</span></a>
+             <a href="/users/signout"><span class="glyphicon glyphicon-user"> Sign-out</span></a>
           </div>
         </header>
     </div>
@@ -39,7 +40,6 @@ A website designed to convert HTML documents to Word documents typically offers 
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
             <form action="/converthtml" method="POST" enctype="multipart/form-data">
                 <input name="dpdf" type="file">
-                <!-- <%= user._id %> -->
                 <input type="text" name="dname" value="<%= user._id %>" hidden required>
                 <input type="submit" class="btn btn-primary btn-lg px-4 me-sm-3"value="Upload">
             </form> 
