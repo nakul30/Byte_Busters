@@ -24,3 +24,19 @@ module.exports.profile = function (req, res) {
             // Handle the error, such as sending an error response or redirecting to an error page
         });
 };
+module.exports.signin = function (req, res) {
+    // console.log(req.user.name) ;  
+    // so that button us no tvisiboe when use signed in 
+    if (req.isAuthenticated()) {
+        return res.redirect('/users/profile');
+    }
+    return res.render('user_signin', {
+        title: "Sign IN",
+        // console.log(req.user.name) 
+    })
+}; 
+module.exports.createsession = function (req, res) {
+    return res.render('converterpage',{
+        title:"Covert It"
+    });
+};
