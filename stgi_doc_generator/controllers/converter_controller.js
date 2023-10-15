@@ -33,8 +33,8 @@ module.exports.convertfile = function (req, res) {
     // } else {
     //     console.log('No dname input received');
     // }
+    // console.log(req.body.dpdf.type);
     console.log(req.body);
-    // console.log(req.body.dname);
     return res.render('user_profile', {
         title: "Covert It"
     });
