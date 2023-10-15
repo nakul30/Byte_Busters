@@ -9,6 +9,7 @@ router.get('/signup' , userscontroller.signup) ;
 //     'local' , 
 //     {failureRedirect : 'signin'} , 
 // ) ,userscontroller.createsession) ; 
+router.post('/create' , userscontroller.create );
 router.get('/create-session' , userscontroller.createsession) ; 
 
 module.exports = router ; 

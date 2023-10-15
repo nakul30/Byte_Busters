@@ -37,12 +37,10 @@
           <p class="lead mb-4">
 A website designed to convert HTML documents to Word documents typically offers a user-friendly interface for seamless conversion. Upon navigating to the site, users would be prompted to upload their HTML file or provide the HTML content directly. The website would then process the HTML input and generate a downloadable Word document, preserving the formatting, images, and text from the original HTML. Users might also have the option to customize the conversion settings, such as adjusting the layout, font styles, or page orientation </p>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-            <form action="/convert/converthtml" method="post" enctype="multipart/form-data">
+            <form action="/convert/converthtml" method="post" enctype="multipart/form-data"> 
                 <input name="hfile" type="file" multiple>
-                <input type="text" name="user" value="<%= user._id %>" hidden required> 
-                <input type="submit" value="Subimt">
-                <!-- <button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3" fdprocessedid="156kh8">Upload</button> -->
-            </form>
+                <input type="submit" class="btn btn-primary btn-lg px-4 me-sm-3"value="Upload">
+            </form> 
             
             
           </div>
