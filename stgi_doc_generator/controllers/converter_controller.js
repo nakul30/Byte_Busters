@@ -1,7 +1,14 @@
 const User = require('../models/user');
 const Document = require('../models/hfile');
 const mammoth = require("mammoth");
+// const { spawn } = require('child_process');
+const { spawn } = require('child_process');
+const fs = require('fs');
+const temp = require('temp');
 // const User = require('path-to-user-model'); // Replace with the actual path to your User model
+const pandocPath = ' C:\Users\nakul\AppData\Roaming\pandoc'; // Replace with the actual path
+// const pandoc = spawn(pandocPath, [tempHtmlPath, '-o', wordFilename]);
+
 
 module.exports.loadpage = function (req, res) {
     User.findById(req.user.id)
@@ -19,44 +26,49 @@ module.exports.loadpage = function (req, res) {
         });
 };
 
-// module.exports.convertfile = function (req, res) {
-//     if (req.file) {
-//         const uploadedFile = req.file;
-//         const fileBuffer = uploadedFile.buffer; 
-//         console.log('File received as buffer:');
-//     } else {
-//         console.log('No file uploaded');
-//     }    
-//     return res.render('user_profile', {
-//         title: "Convert It"
-//     });
-// };
-// const mammoth = require("mammoth");
-
 module.exports.convertfile = function (req, res) {
     if (req.file) {
         const uploadedFile = req.file;
         const fileBuffer = uploadedFile.buffer;
+        const wordFilename = `converted_${Date.now()}.docx`;
 
-        // Convert the HTML buffer to a Word document
-        mammoth.convertToHtml({ buffer: fileBuffer })
-            .then(result => {
-                const wordDocument = result.value; // The Word document as HTML
-                const messages = result.messages;
+        // Call pandoc to convert HTML to Word
+        const pandoc = spawn('pandoc', [
+            '--from=html',
+            '--to=docx',
+            '-o', wordFilename,
+        ]);
 
-                
-                res.render('user_profile', {
-                    title: "Convert It",
-                    wordDocument: wordDocument 
-                });
-            })
-            .catch(error => {
-                console.error("Error converting HTML to Word:", error);
-                res.status(500).send("Error converting HTML to Word");
-            });
+        pandoc.stdin.write(fileBuffer);
+        pandoc.stdin.end();
+
+        pandoc.stdout.on('data', (data) => {
+            console.log(`stdout: ${data}`);
+        });
+
+        pandoc.stderr.on('data', (data) => {
+            console.error(`stderr: ${data}`);
+        });
+
+        pandoc.on('close', (code) => {
+            if (code === 0) {
+                // Serve the Word document as a downloadable attachment
+                res.setHeader('Content-Disposition', `attachment; filename="${wordFilename}"`);
+                res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+                res.sendFile(wordFilename);
+            } else {
+                console.error('Error converting HTML to Word');
+                res.status(500).send('Error converting HTML to Word');
+            }
+        });
     } else {
         console.log('No file uploaded');
         res.status(400).send('No file uploaded');
     }
+    return res.render('converterpage',{
+        title:"Covert It"
+    });
+
+     
 };
 

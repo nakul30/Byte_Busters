@@ -28,10 +28,11 @@ let storageForPDF = multer.diskStorage({
         const filename = 'pdf-' + uniqueSuffix + path.extname(file.originalname); // Keep the original extension
         cb(null, filename);
     }
-});
+}); 
 
 docschema.statics.uploadedPpdf = multer({ storage: storageForPDF }).single('dpdf');
 docschema.statics.docPath = DOC_PATH;
 
 const Document = mongoose.model('Document', docschema);
 module.exports = Document;
+  

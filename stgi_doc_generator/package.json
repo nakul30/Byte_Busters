@@ -12,12 +12,17 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "cheerio": "^1.0.0-rc.12",
+    "child_process": "^1.0.2",
     "connect-mongo": "^5.1.0",
     "cookie-parser": "^1.4.6",
+    "docx": "^8.2.3",
+    "docxtemplater": "^3.40.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "html-docx": "^1.2.0",
+    "html-docx-js": "^0.3.1",
     "i": "^0.3.7",
     "mammoth": "^1.6.0",
     "mongoose": "^7.6.2",
@@ -25,7 +30,9 @@
     "npm": "^10.2.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "session": "^0.1.0"
+    "pizzip": "^3.1.4",
+    "session": "^0.1.0",
+    "temp": "^0.9.4"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
 // app.use(bodyparser());
 
-app.use(express.static('./assets')) ; 
+app.use(express.static('./assets')) ;  
 // app.use('/uploads', express.static(__dirname + '/uploads')) ; 
 app.set('view engine' , 'ejs') ; 
 app.set('views' , './views') ;                    // during setting up views s
