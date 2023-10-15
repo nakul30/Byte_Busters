@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export HTML to Word</title>
+    <style type="text/css">
+        body{
+            font-family: Verdana, Sans-serif;
+            padding: 0px;
+            margin: 0px;
+            background-color: #f1f1f1;
+        }
+        #container{
+            width: 800px;
+            margin: auto;
+            padding: 20px 20px;
+            background-color: white;
+        }
+        p{
+            text-align: justify;
+            line-height: 1.5;
+        }
+        img{
+            margin: auto;
+            width: 100%;
+        }
+        #btn-to-word{
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 100px;
+            display: block;
+            padding: 20px;
+            background-color: #0000ff;
+            color: white;
+            border-radius: 2px;
+            border: 1px solid #3030ff;
+            font-size: 20px;
+        }
+        #btn-to-word:hover{
+            background-color: #3656f5;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https:??ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <img src="cat.jpeg">
+        <h1>Essay on Cat in English For School Kids & Students</h1>
+        <p>Cat is a very adorable and a cute animal. It is a domestic animal and is kept as a pet. It has very sharp claws and keen eyes that help it in seeing during the night. That means that it has a very good nocturnal vision that is much better than humans</p>
+        <p>It has two small ears, with a highly sensitive tympanuc membrane which helps it in hearing even the slightest of the sounds. It's small and bushy tail helps it in mainitaining balance while walking</p>
+    </div>
+    <button id="btn-to-word">Download as Word</button>
+
+    <script type="text/javascript">
+        document.getElementById('btn-to-word').onclick=function() {
+            Export2Doc('container','htm12word')
+        }
+        function Export2Doc(element, filename = '') {
+
+        var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+        var postHtml = "</body></html>";
+
+        var html = preHtml + document.getElementById(element).innerHTML + postHtml;
+
+        var blob = new Blob(['\ufeff', html], {
+            type: 'application/msword'
+        });
+
+        var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
+
+
+        filename = filename ? filename + '.doc' : 'document.doc';
+
+
+        var downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if (navigator.msSaveOrOpenBlob) {
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+
+            downloadLink.href = url;
+            downloadLink.download = filename;
+            downloadLink.click();
+        }
+
+        document.body.removeChild(downloadLink);
+        }
+    </script>
+</body>
+</html>
