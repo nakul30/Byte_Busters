@@ -11,10 +11,10 @@ const MongoStore = require('connect-mongo') ;
 app.use(express.urlencoded()) ;          
 app.use(cookieParser()) ;
 
-// app.use(express.static('./assets')) ; 
+app.use(express.static('./assets')) ; 
 // app.use('/uploads', express.static(__dirname + '/uploads')) ; 
-// app.set('view engine' , 'ejs') ; 
-// app.set('views' , './views') ;                    // during setting up views s
+app.set('view engine' , 'ejs') ; 
+app.set('views' , './views') ;                    // during setting up views s
 
 
 const store = new  MongoStore({
@@ -23,6 +23,7 @@ const store = new  MongoStore({
     autoRemove: 'disabled',
   });
 // during express session --- what exp session does? encrytpts cookie not done by passport js 
+
 app.use(session({
     name: 'doc_generator' ,
     //TODO -- chane the encrptyoi before final depouyemnt 
@@ -36,9 +37,9 @@ app.use(session({
 })
 ); 
 // app.use(passport.initialize()) ; 
-// app.use(passport.session()) ; 
+app.use(passport.session()) ; 
 // app.use(passport.setAuthenticateduser) ; 
-// app.use('/' , require('./routes')) ; 
+app.use('/' , require('./routes')) ; 
 
 app.listen(port ,function( err ){
     if ( err ){
