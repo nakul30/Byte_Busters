@@ -35,11 +35,13 @@
         <h1 class="display-4 fw-bold text-body-emphasis">HTML to DOCX Converter</h1>
         <div class="col-lg-6 mx-auto">
           <p class="lead mb-4">
-A website designed to convert HTML documents to Word documents typically offers a user-friendly interface for seamless conversion. Upon navigating to the site, users would be prompted to upload their HTML file or provide the HTML content directly. The website would then process the HTML input and generate a downloadable Word document, preserving the formatting, images, and text from the original HTML. Users might also have the option to customize the conversion settings, such as adjusting the layout, font styles, or page orientation</p>
+A website designed to convert HTML documents to Word documents typically offers a user-friendly interface for seamless conversion. Upon navigating to the site, users would be prompted to upload their HTML file or provide the HTML content directly. The website would then process the HTML input and generate a downloadable Word document, preserving the formatting, images, and text from the original HTML. Users might also have the option to customize the conversion settings, such as adjusting the layout, font styles, or page orientation </p>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
             <form action="/convert/converthtml" method="post" enctype="multipart/form-data">
-                <input name="file" type="file" multiple>
-                <button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3" fdprocessedid="156kh8">Upload</button>
+                <input name="hfile" type="file" multiple>
+                <input type="text" name="user" value="<%= user._id %>" hidden required> 
+                <input type="submit" value="Subimt">
+                <!-- <button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3" fdprocessedid="156kh8">Upload</button> -->
             </form>
             
             
